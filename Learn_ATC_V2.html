@@ -1,0 +1,1373 @@
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATC Transcription Training Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1a365d;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3182ce;
+        }
+
+        h2 {
+            color: #2c5282;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bee3f8;
+        }
+
+        h3 {
+            color: #2d3748;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .intro-section {
+            background: linear-gradient(135deg, #ebf8ff 0%, #e6fffa 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3182ce;
+        }
+
+        .example-box {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .transcript {
+            font-family: 'Courier New', monospace;
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .formatting-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.08);
+        }
+
+        .formatting-table th {
+            background: linear-gradient(135deg, #2c5282 0%, #2b6cb0 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .formatting-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .formatting-table tr:nth-child(even) {
+            background: #f7fafc;
+        }
+
+        .formatting-table tr:hover {
+            background: #edf2f7;
+        }
+
+        .format-code {
+            font-family: 'Courier New', monospace;
+            background: #edf2f7;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .highlight-caps {
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: 600;
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        .highlight-capitalize {
+            background: #d1fae5;
+            color: #065f46;
+            font-weight: 600;
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        .highlight-lowercase {
+            background: #dbeafe;
+            color: #1e40af;
+            font-weight: 600;
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .unformatted {
+            background: #fed7d7;
+            border: 1px solid #fc8181;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .formatted {
+            background: #c6f6d5;
+            border: 1px solid #68d391;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .comparison-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .unformatted .comparison-label {
+            color: #c53030;
+        }
+
+        .formatted .comparison-label {
+            color: #276749;
+        }
+
+        .practice-section {
+            background: #fffbeb;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .practice-item {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .practice-number {
+            background: #3182ce;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .practice-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .flip-card-wrapper {
+            position: relative;
+        }
+
+        .flip-card-front-static,
+        .flip-card-back-static {
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+
+        .flip-card-front-static {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .flip-card-back-static {
+            background: #f0fff4;
+            border: 2px solid #68d391;
+            display: none;
+        }
+
+        .flip-card-wrapper.flipped .flip-card-front-static {
+            display: none;
+        }
+
+        .flip-card-wrapper.flipped .flip-card-back-static {
+            display: block;
+        }
+
+        .flip-card-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .flip-card-front-static .flip-card-label {
+            color: #718096;
+        }
+
+        .flip-card-back-static .flip-card-label {
+            color: #276749;
+        }
+
+        .practice-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.8;
+            resize: vertical;
+            transition: border-color 0.2s;
+            margin-top: 15px;
+        }
+
+        .practice-textarea:focus {
+            outline: none;
+            border-color: #3182ce;
+        }
+
+        .answer-card {
+            margin-top: 15px;
+        }
+
+        .answer-toggle {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .answer-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+        }
+
+        .answer-toggle.showing-answer {
+            background: linear-gradient(135deg, #667eea 0%, #5a67d8 100%);
+        }
+
+        .answer-toggle.showing-answer:hover {
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .conversation-section {
+            margin-top: 40px;
+        }
+
+        .conversation-item {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #3182ce;
+        }
+
+        .conversation-number {
+            background: #2c5282;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .conversation-title {
+            font-weight: 600;
+            color: #1a365d;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .conversation-description {
+            color: #718096;
+            font-size: 0.9em;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .dialogue {
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+
+        .dialogue-line {
+            margin: 8px 0;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .pilot-line {
+            background: #e6fffa;
+            border-left: 3px solid #38b2ac;
+        }
+
+        .atc-line {
+            background: #ebf8ff;
+            border-left: 3px solid #3182ce;
+        }
+
+        .speaker {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-list li {
+            background: #f7fafc;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #3182ce;
+        }
+
+        .resource-list li strong {
+            color: #2c5282;
+        }
+
+        .key-elements {
+            background: #fffbeb;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .key-elements h4 {
+            color: #92400e;
+            margin-bottom: 15px;
+        }
+
+        .key-elements ul {
+            margin-left: 20px;
+        }
+
+        .key-elements li {
+            margin: 8px 0;
+        }
+
+        .bonus-section {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            border: 2px solid #9f7aea;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        .bonus-section h3 {
+            color: #6b46c1;
+        }
+
+        /* AirNav Mockup Styles */
+        .airnav-mockup {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .airnav-header {
+            background: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+            padding: 8px 12px;
+        }
+
+        .airnav-url {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .url-icon {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .url-bar {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 4px 12px;
+            flex-grow: 1;
+            color: #333;
+        }
+
+        .airnav-content {
+            padding: 20px 30px;
+            color: #000;
+        }
+
+        .airnav-section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            color: #000;
+        }
+
+        .airnav-section-title:first-child {
+            margin-top: 0;
+        }
+
+        .airnav-subsection {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 15px 0 10px 0;
+            color: #000;
+        }
+
+        .airnav-text {
+            margin: 5px 0;
+        }
+
+        .airnav-details {
+            margin-left: 20px;
+        }
+
+        .airnav-row {
+            display: flex;
+            margin: 3px 0;
+        }
+
+        .airnav-label {
+            min-width: 180px;
+            text-align: right;
+            padding-right: 10px;
+            color: #000;
+        }
+
+        .runway-columns {
+            display: flex;
+            gap: 40px;
+            margin: 15px 0 15px 100px;
+        }
+
+        .runway-col {
+            flex: 1;
+        }
+
+        .runway-header {
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .runway-col .airnav-row {
+            flex-direction: column;
+        }
+
+        .runway-col .airnav-label {
+            text-align: left;
+            min-width: auto;
+            padding-right: 0;
+        }
+
+        .highlight-yellow {
+            background-color: #ffff00;
+            padding: 1px 3px;
+        }
+
+        .airnav-remarks {
+            margin-left: 20px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .airnav-remarks li {
+            margin: 3px 0;
+        }
+
+        .airnav-remarks li::before {
+            content: "- ";
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .comparison-box {
+                grid-template-columns: 1fr;
+            }
+
+            .formatting-table {
+                font-size: 0.9em;
+            }
+
+            .formatting-table th,
+            .formatting-table td {
+                padding: 10px;
+            }
+
+            .runway-columns {
+                flex-direction: column;
+                margin-left: 20px;
+            }
+
+            .airnav-label {
+                min-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ATC Transcription Training Guide</h1>
+
+        <!-- Intro Section -->
+        <section class="intro-section">
+            <h2>Introduction</h2>
+            <p>Transcribing Air Traffic Control audio is a unique challenge compared to other transcription work like medical or legal dictation. Instead of one clear speaker in a quiet room, you're listening to radio communications – which means static, background noise, and sometimes digitally distorted transmissions.</p>
+            
+            <p>The exchanges are fast-paced and brief, with pilots and controllers speaking in rapid, clipped phrases rather than full sentences.</p>
+            
+            <p>ATC also has its own specialized vocabulary – phonetic alphabet, aviation terminology, waypoints, and specific conventions for numbers (like saying "niner" for 9 or "tree" for 3).</p>
+            
+            <p>ATC also sometimes uses phrases like "flot," which is short for "flight level."</p>
+            
+            <p>The formatting of this project has specific guidelines, such as "niner" should be transcribed as "nine," and call signs in all caps: DELTA THREE SIX NINE.</p>
+            
+            <p>There are all clues as to what might be said next. For example, an altimeter reading is often given to the pilot. This adjustment is necessary so that the instruments calculate the correct altitude. This reading is the barometric pressure, which typically varies from about 28.00 to 31.00 inches of mercury.</p>
+            
+            <p>So if you hear the word "altimeter," chances are the next number almost has to be either "two" or "three," and then the next number would be either "eight," "nine," "zero," or "one."</p>
+            
+            <p>Also, when an aircraft is above 18,000 feet, the altimeter is automatically set to 29.92, so if you have a jet at flight level 25 and hear "altimeter," the most likely next five words you will hear are "two nine point nine two."</p>
+            
+            <p>You don't have to commit this to memory now; just be aware that certain phrases will give you clues to what's being said next.</p>
+            
+            <p>And the more clues and knowledge you have at recognizing the patterns, the faster you'll transcribe – hence, the more money you'll make.</p>
+        </section>
+
+        <!-- Using the Global Key Section -->
+        <section>
+            <h2>Using the Global Key for Information Needed to Create or Verify Transcript</h2>
+            
+            <p>There's airport information available in each data row</p>
+            
+            <p>There are also specific word tracks for communications such as an announcement on a CTAF – which is often used at smaller airports where there is no control tower – to announce their position to anyone else possibly in the area. You'll see this pattern fairly often.</p>
+            
+            <p>It usually has the following sequence:</p>
+            
+            <div class="example-box">
+                <p><strong>Airport traffic</strong> CALL SIGN, where the pilot is, what the pilot is doing, <strong>Airport traffic</strong></p>
+            </div>
+            
+            <p>These can be looked up using AirNav.com and other resources. Let's say a file contains airport identifier 40AR and the following transcript:</p>
+            
+            <div class="transcript">Lost Bridge Village traffic CESSNA THIRTEEN NINETY SIX ten miles north inbound for landing runway three three Lost Bridge Village traffic</div>
+            
+            <p>If we werent sure we heard "Lost Bridge Village" and the right runway name "three three":</p>
+            
+            <!-- AirNav Mockup -->
+            <div class="airnav-mockup">
+                <div class="airnav-header">
+                    <div class="airnav-url">
+                        <span class="url-icon">←</span>
+                        <span class="url-icon">→</span>
+                        <span class="url-icon">↻</span>
+                        <span class="url-bar">🔒 airnav.com/airport/40AR</span>
+                    </div>
+                </div>
+                <div class="airnav-content">
+                    <h4 class="airnav-section-title">Airport Services</h4>
+                    <p class="airnav-text">Parking: tiedowns</p>
+                    
+                    <h4 class="airnav-section-title">Runway Information</h4>
+                    <h5 class="airnav-subsection">Runway 15/33</h5>
+                    
+                    <div class="airnav-details">
+                        <div class="airnav-row">
+                            <span class="airnav-label">Dimensions:</span>
+                            <span>3150 x 40 ft. / 960 x 12 m</span>
+                        </div>
+                        <div class="airnav-row">
+                            <span class="airnav-label">Surface:</span>
+                            <span>asphalt</span>
+                        </div>
+                        <div class="airnav-row">
+                            <span class="airnav-label">Operational restrictions:</span>
+                            <span>LAND RWY 33; TKOF RWY 15</span>
+                        </div>
+                    </div>
+                    
+                    <div class="runway-columns">
+                        <div class="runway-col">
+                            <div class="runway-header">RUNWAY 15</div>
+                            <div class="airnav-row">
+                                <span class="airnav-label">Traffic pattern:</span>
+                                <span>left</span>
+                            </div>
+                            <div class="airnav-row">
+                                <span class="airnav-label">Obstructions:</span>
+                                <span>301 ft. gnd, 500 ft. from runway<br>+20 FT TREES 100 TO 600 FT FM RWY END.</span>
+                            </div>
+                        </div>
+                        <div class="runway-col">
+                            <div class="runway-header"><span class="highlight-yellow">RUNWAY 33</span></div>
+                            <div class="airnav-row">
+                                <span class="airnav-label">Traffic pattern:</span>
+                                <span>left</span>
+                            </div>
+                            <div class="airnav-row">
+                                <span class="airnav-label">Obstructions:</span>
+                                <span>30 ft. trees, 200 ft. from runway<br>370 FT HILL 100 TO 300 FT FM RWY END; AND 30 FT BLDG 100 FT FM RWY END.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4 class="airnav-section-title">Airport Ownership and Management from official FAA records</h4>
+                    
+                    <div class="airnav-details">
+                        <div class="airnav-row">
+                            <span class="airnav-label">Ownership:</span>
+                            <span>Privately-owned</span>
+                        </div>
+                        <div class="airnav-row">
+                            <span class="airnav-label">Owner:</span>
+                            <span><span class="highlight-yellow">LOST BRIDGE VILLAGE</span> COMMUNITY<br>
+                            12477 LODGE DRIVE<br>
+                            GARFIELD, AR 72732<br>
+                            Phone 479-359-3204</span>
+                        </div>
+                        <div class="airnav-row">
+                            <span class="airnav-label">Manager:</span>
+                            <span>STEVE BRAY<br>
+                            21020 BLACK OAK DRIVE<br>
+                            GARFIELD, AR 72732<br>
+                            Phone 479-359-0317</span>
+                        </div>
+                    </div>
+                    
+                    <h4 class="airnav-section-title">Additional Remarks</h4>
+                    <ul class="airnav-remarks">
+                        <li>RWY 15/33 TREES ALG EDGE ON BOTH SIDES.</li>
+                        <li>RWY 15/33 POSS DEER AND/OR PEOPLE ON THE RWY AT ANY TIME.</li>
+                        <li>RWY 15/33 PWR LINES BOTH SIDES OF RWY.</li>
+                        <li>AIRFIELD USAGE POLICY CAN BE FOUND AT HTTP://WWW.LBVCA.COM</li>
+                        <li>FOR CD CTC RAZORBACK APCH 479-649-2416, WHEN APCH CLSD CTC MEMPHIS ARTCC AT 901-368-8453/8449.</li>
+                        <li>RWY 13/31 RENAMED TO 15/33 6/9/2022</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p>There is a runway three three, which checks out, and we see Lost Bridge Village Airport, etc.</p>
+        </section>
+
+        <!-- Pattern to Common ATC Conversations -->
+        <section>
+            <h2>There is a Pattern to Common ATC Conversations</h2>
+            
+            <p>Probably by far the most common exchange you'll see between a pilot and ATC is a <strong>cleared direct approach:</strong></p>
+            
+            <p>For the time being, do not worry about committing to memory that this is a direct approach, etc. That memorization will come with time automatically.</p>
+            
+            <p>Just know there are traditional formats for almost all ATC communications.</p>
+            
+            <p>It involves a pilot reporting their position and intent, followed by the tower granting clearance, often including specific instructions. It is concise, prioritizing safety, efficiency, and clear communication to land safely at the runway.</p>
+            
+            <h3>Example Conversation (Direct Approach):</h3>
+            
+            <div class="dialogue">
+                <div class="dialogue-line pilot-line">
+                    <span class="speaker">Pilot:</span> "Springfield tower CESSNA ONE TWO LIMA ten miles northeast inbound for landing with information Kilo"
+                </div>
+                <div class="dialogue-line atc-line">
+                    <span class="speaker">ATC:</span> "CESSNA ONE TWO LIMA Springfield tower runway three two left cleared to land"
+                </div>
+                <div class="dialogue-line pilot-line">
+                    <span class="speaker">Pilot:</span> "cleared to land runway three two left CESSNA ONE TWO LIMA"
+                </div>
+            </div>
+            
+            <div class="key-elements">
+                <h4>Key Elements:</h4>
+                
+                <h5>Pilot Makes First Contact</h5>
+                <ul>
+                    <li><strong>Ident:</strong> Pilot states their call sign – "CESSNA ONE TWO LIMA"</li>
+                    <li><strong>Where:</strong> Pilot gives location – "ten miles northeast"</li>
+                    <li><strong>What are they doing:</strong> "inbound for landing with information Kilo"</li>
+                </ul>
+                
+                <h5>ATC Response</h5>
+                <ul>
+                    <li><strong>Verifies Call Sign:</strong> "CESSNA ONE TWO LIMA"</li>
+                    <li><strong>States Facility:</strong> "Springfield tower"</li>
+                    <li><strong>What or Where:</strong> "runway three two left"</li>
+                    <li><strong>Action:</strong> "cleared to land"</li>
+                </ul>
+                
+                <h5>Readback</h5>
+                <p>Pilot repeats key instructions to confirm understanding.</p>
+                <p>Pilot: "cleared to land runway three two left CESSNA ONE TWO LIMA."</p>
+                <p><em>Almost always ending with the aircraft call sign.</em></p>
+            </div>
+        </section>
+
+        <!-- Formatting Section -->
+        <section>
+            <h2>Formatting the Transcript Correctly</h2>
+            
+            <p>This project, like almost all data annotation projects, has a format that must be followed.</p>
+            
+            <h3>Formatting Rules</h3>
+            
+            <table class="formatting-table">
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Format</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Callsigns & Acronyms</td>
+                        <td><span class="format-code">ALL CAPS</span></td>
+                        <td>SKYWEST TWO, VFR, IFR, RNAV</td>
+                    </tr>
+                    <tr>
+                        <td>Runways</td>
+                        <td><span class="format-code">Lowercase, spelled out</span></td>
+                        <td>runway one zero</td>
+                    </tr>
+                    <tr>
+                        <td>Waypoints (SIDs/STARs/Fixes)</td>
+                        <td><span class="format-code">All lowercase</span></td>
+                        <td>aliss, milre, jaxie</td>
+                    </tr>
+                    <tr>
+                        <td>Phonetic Letters</td>
+                        <td><span class="format-code">Alfa, Juliett</span></td>
+                        <td>(not Alpha, Juliet) – Pay attention to the spelling of these two Phonetics.</td>
+                    </tr>
+                    <tr>
+                        <td>Numbers</td>
+                        <td><span class="format-code">'niner' → 'nine'</span></td>
+                        <td>NINE (in callsigns), nine (elsewhere) – 'tree' and 'fife' are 'three' and 'five' – Never type in numbers like 13</td>
+                    </tr>
+                    <tr>
+                        <td>General Terms</td>
+                        <td><span class="format-code">Lowercase</span></td>
+                        <td>tower, approach, ground, traffic, roger, heavy</td>
+                    </tr>
+                    <tr>
+                        <td>Heavy Designator</td>
+                        <td><span class="format-code">Lowercase after callsign</span></td>
+                        <td>UPS TWENTY TWO heavy</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Examples Section -->
+        <section>
+            <h2>Examples of Formatting Rules Applied</h2>
+            <p>Notice how format rules are applied to the all-lowercase examples. <span class="highlight-caps">Yellow highlights</span> show ALL CAPS changes, <span class="highlight-capitalize">green highlights</span> show capitalization changes.</p>
+            
+            <h3>Landing Request</h3>
+            <div class="comparison-box">
+                <div class="unformatted">
+                    <div class="comparison-label">❌ Unformatted</div>
+                    <div class="dialogue">springfield tower cessna one two lima ten miles northeast inbound for landing with information kilo</div>
+                </div>
+                <div class="formatted">
+                    <div class="comparison-label">✓ Correctly Formatted</div>
+                    <div class="dialogue"><span class="highlight-capitalize">Springfield</span> tower <span class="highlight-caps">CESSNA ONE TWO LIMA</span> ten miles northeast inbound for landing with information <span class="highlight-capitalize">Kilo</span></div>
+                </div>
+            </div>
+
+            <h3>Takeoff Readback</h3>
+            <div class="comparison-box">
+                <div class="unformatted">
+                    <div class="comparison-label">❌ Unformatted</div>
+                    <div class="dialogue">cleared for takeoff runway three two left cessna one two lima</div>
+                </div>
+                <div class="formatted">
+                    <div class="comparison-label">✓ Correctly Formatted</div>
+                    <div class="dialogue">cleared for takeoff runway three two left <span class="highlight-caps">CESSNA ONE TWO LIMA</span></div>
+                </div>
+            </div>
+
+            <h3>Frequency Change Acknowledgment</h3>
+            <div class="comparison-box">
+                <div class="unformatted">
+                    <div class="comparison-label">❌ Unformatted</div>
+                    <div class="dialogue">contact departure one two four point three cessna one two lima</div>
+                </div>
+                <div class="formatted">
+                    <div class="comparison-label">✓ Correctly Formatted</div>
+                    <div class="dialogue">contact departure one two four point three <span class="highlight-caps">CESSNA ONE TWO LIMA</span></div>
+                </div>
+            </div>
+
+            <h3>Taxi Readback</h3>
+            <div class="comparison-box">
+                <div class="unformatted">
+                    <div class="comparison-label">❌ Unformatted</div>
+                    <div class="dialogue">taxi to runway three two left via alpha bravo hold short runway two eight cessna one two lima</div>
+                </div>
+                <div class="formatted">
+                    <div class="comparison-label">✓ Correctly Formatted</div>
+                    <div class="dialogue">taxi to runway three two left via <span class="highlight-capitalize">Alfa Bravo</span> hold short runway two eight <span class="highlight-caps">CESSNA ONE TWO LIMA</span></div>
+                </div>
+            </div>
+
+            <h3>Checking In on New Frequency</h3>
+            <div class="comparison-box">
+                <div class="unformatted">
+                    <div class="comparison-label">❌ Unformatted</div>
+                    <div class="dialogue">springfield departure cessna one two lima two thousand climbing four thousand</div>
+                </div>
+                <div class="formatted">
+                    <div class="comparison-label">✓ Correctly Formatted</div>
+                    <div class="dialogue"><span class="highlight-capitalize">Springfield</span> departure <span class="highlight-caps">CESSNA ONE TWO LIMA</span> two thousand climbing four thousand</div>
+                </div>
+            </div>
+
+            <h3>Traffic in Sight</h3>
+            <div class="comparison-box">
+                <div class="unformatted">
+                    <div class="comparison-label">❌ Unformatted</div>
+                    <div class="dialogue">traffic in sight cessna one two lima</div>
+                </div>
+                <div class="formatted">
+                    <div class="comparison-label">✓ Correctly Formatted</div>
+                    <div class="dialogue">traffic in sight <span class="highlight-caps">CESSNA ONE TWO LIMA</span></div>
+                </div>
+            </div>
+
+            <h3>Altitude Readback</h3>
+            <div class="comparison-box">
+                <div class="unformatted">
+                    <div class="comparison-label">❌ Unformatted</div>
+                    <div class="dialogue">descend and maintain eight thousand american eight fifteen</div>
+                </div>
+                <div class="formatted">
+                    <div class="comparison-label">✓ Correctly Formatted</div>
+                    <div class="dialogue">descend and maintain eight thousand <span class="highlight-caps">AMERICAN EIGHT FIFTEEN</span></div>
+                </div>
+            </div>
+
+            <h3>Flight Following Request</h3>
+            <div class="comparison-box">
+                <div class="unformatted">
+                    <div class="comparison-label">❌ Unformatted</div>
+                    <div class="dialogue">springfield approach cessna one two lima over downtown at four thousand five hundred request flight following to riverside</div>
+                </div>
+                <div class="formatted">
+                    <div class="comparison-label">✓ Correctly Formatted</div>
+                    <div class="dialogue"><span class="highlight-capitalize">Springfield</span> approach <span class="highlight-caps">CESSNA ONE TWO LIMA</span> over downtown at four thousand five hundred request flight following to <span class="highlight-capitalize">Riverside</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Waypoints and Acronyms Section -->
+        <section>
+            <h2>Waypoints and Acronyms</h2>
+            
+            <p>Waypoints are pronounceable nonsense words – they are made-up words that sound like something and are generally specific to the airport identifier you will find in the data row.</p>
+            
+            <p>To find a list of waypoints for each airport, you can use the resources listed below.</p>
+            
+            <h3>Direct to Waypoint Clearance</h3>
+            <p>ATC clearing pilot to fly directly to a navigation fix</p>
+            <div class="dialogue">
+                <div class="dialogue-line atc-line">
+                    <span class="speaker">ATC:</span> UNITED FOUR FIFTY TWO proceed direct <span class="highlight-lowercase">bowie</span> then as filed
+                </div>
+                <div class="dialogue-line pilot-line">
+                    <span class="speaker">Pilot:</span> direct <span class="highlight-lowercase">bowie</span> then as filed UNITED FOUR FIFTY TWO
+                </div>
+            </div>
+
+            <h3>Arrival Procedure with Waypoints</h3>
+            <p>ATC issuing a STAR (Standard Terminal Arrival Route) with crossing restrictions</p>
+            <div class="dialogue">
+                <div class="dialogue-line atc-line">
+                    <span class="speaker">ATC:</span> DELTA EIGHT TWENTY ONE descend via the <span class="highlight-lowercase">flcon</span> three arrival cross <span class="highlight-lowercase">milre</span> at and maintain one two thousand
+                </div>
+                <div class="dialogue-line pilot-line">
+                    <span class="speaker">Pilot:</span> descend via the <span class="highlight-lowercase">flcon</span> three arrival cross <span class="highlight-lowercase">milre</span> at and maintain one two thousand DELTA EIGHT TWENTY ONE
+                </div>
+                <div class="dialogue-line atc-line">
+                    <span class="speaker">ATC:</span> DELTA EIGHT TWENTY ONE expect vectors to ILS runway two six left after <span class="highlight-lowercase">jebby</span>
+                </div>
+                <div class="dialogue-line pilot-line">
+                    <span class="speaker">Pilot:</span> expect vectors ILS runway two six left after <span class="highlight-lowercase">jebby</span> DELTA EIGHT TWENTY ONE
+                </div>
+            </div>
+
+            <h3>Departure Procedure with Waypoints</h3>
+            <p>Pilot receiving departure clearance with a SID (Standard Instrument Departure)</p>
+            <div class="dialogue">
+                <div class="dialogue-line atc-line">
+                    <span class="speaker">ATC:</span> JETBLUE SIX FORTY TWO cleared to Boston via the <span class="highlight-lowercase">bnito</span> five departure <span class="highlight-lowercase">allex</span> transition then as filed climb via SID
+                </div>
+                <div class="dialogue-line pilot-line">
+                    <span class="speaker">Pilot:</span> cleared to Boston <span class="highlight-lowercase">bnito</span> five departure <span class="highlight-lowercase">allex</span> transition as filed climb via SID JETBLUE SIX FORTY TWO
+                </div>
+                <div class="dialogue-line atc-line">
+                    <span class="speaker">ATC:</span> JETBLUE SIX FORTY TWO readback correct contact ground one two one point nine
+                </div>
+                <div class="dialogue-line pilot-line">
+                    <span class="speaker">Pilot:</span> ground one two one point nine JETBLUE SIX FORTY TWO
+                </div>
+            </div>
+
+            <h3>Best Resources for Finding Waypoints</h3>
+            
+            <ul class="resource-list">
+                <li>
+                    <strong>SkyVector.com (Highly Recommended)</strong><br>
+                    Free online aviation charts. Shows sectional charts, IFR low/high charts. Click on any airport to see approaches, SIDs, and STARs. You can see all the waypoints visually on the map.<br><br>
+                    <em>How to use:</em> Go to skyvector.com → Search for an airport (e.g., "KORD" for Chicago O'Hare) → Click on the airport → Select "Procedures" to see SIDs, STARs, and approaches. Each procedure chart lists all the waypoints.
+                </li>
+                <li>
+                    <strong>AirNav.com</strong><br>
+                    Detailed airport information. Links to instrument procedures. Shows nearby navaids and fixes.<br><br>
+                    <em>How to use:</em> Go to airnav.com → Search for an airport code → Scroll to "Instrument Procedures" section.
+                </li>
+                <li>
+                    <strong>FlightAware.com</strong><br>
+                    Track real flights. See actual routes with waypoints. Great for seeing waypoints in context.<br><br>
+                    <em>How to use:</em> Go to flightaware.com → Search for a flight or airport → Click on a flight to see its route with waypoints listed.
+                </li>
+                <li>
+                    <strong>Google Search for Procedures</strong><br>
+                    Search "[Airport Code] SID" or "[Airport Code] STAR"<br>
+                    Example: "KJFK STAR" or "KATL SID"<br>
+                    Often returns PDF charts directly from the FAA.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Practice Section -->
+        <section class="practice-section">
+            <h2>Working Examples – Practice Your Formatting</h2>
+            <p>Use this section to practice applying the formatting rules. Type your formatted version in the text box, then click the button to flip the card and reveal the correct answer.</p>
+
+            <!-- Practice Item 1 -->
+            <div class="practice-item">
+                <div class="practice-title">
+                    <span class="practice-number">1</span>
+                    Initial Contact and Landing Clearance
+                </div>
+                <div class="flip-card-wrapper" id="card1">
+                    <div class="flip-card-front-static">
+                        <div class="flip-card-label">❌ Unformatted Transcript</div>
+                        Pilot: atlanta approach skyhawk four five six papa romeo fifteen miles northwest at five thousand five hundred with information tango<br><br>
+                        ATC: skyhawk four five six papa romeo atlanta approach cleared visual approach runway two six right<br><br>
+                        Pilot: cleared visual approach runway two six right skyhawk four five six papa romeo
+                    </div>
+                    <div class="flip-card-back-static">
+                        <div class="flip-card-label">✓ Correctly Formatted</div>
+                        Pilot: <mark>A</mark>tlanta approach <mark>SKYHAWK FOUR FIVE SIX PAPA ROMEO</mark> fifteen miles northwest at five thousand five hundred with information <mark>T</mark>ango<br><br>
+                        ATC: <mark>SKYHAWK FOUR FIVE SIX PAPA ROMEO</mark> <mark>A</mark>tlanta approach cleared visual approach runway two six right<br><br>
+                        Pilot: cleared visual approach runway two six right <mark>SKYHAWK FOUR FIVE SIX PAPA ROMEO</mark>
+                    </div>
+                </div>
+                <textarea class="practice-textarea" placeholder="Type your formatted version here..."></textarea>
+                <div class="answer-card">
+                    <button class="answer-toggle" onclick="toggleCard('card1', this)">Reveal Correct Answer</button>
+                </div>
+            </div>
+
+            <!-- Practice Item 2 -->
+            <div class="practice-item">
+                <div class="practice-title">
+                    <span class="practice-number">2</span>
+                    Taxi with Multiple Taxiways
+                </div>
+                <div class="flip-card-wrapper" id="card2">
+                    <div class="flip-card-front-static">
+                        <div class="flip-card-label">❌ Unformatted Transcript</div>
+                        Pilot: denver ground united eight forty two at gate bravo seven request taxi<br><br>
+                        ATC: united eight forty two denver ground taxi to runway three four left via bravo mike alfa charlie hold short runway two five<br><br>
+                        Pilot: taxi runway three four left via bravo mike alfa charlie hold short runway two five united eight forty two
+                    </div>
+                    <div class="flip-card-back-static">
+                        <div class="flip-card-label">✓ Correctly Formatted</div>
+                        Pilot: <mark>D</mark>enver ground <mark>UNITED EIGHT FORTY TWO</mark> at gate <mark>B</mark>ravo seven request taxi<br><br>
+                        ATC: <mark>UNITED EIGHT FORTY TWO</mark> <mark>D</mark>enver ground taxi to runway three four left via <mark>B</mark>ravo <mark>M</mark>ike <mark>A</mark>lfa <mark>C</mark>harlie hold short runway two five<br><br>
+                        Pilot: taxi runway three four left via <mark>B</mark>ravo <mark>M</mark>ike <mark>A</mark>lfa <mark>C</mark>harlie hold short runway two five <mark>UNITED EIGHT FORTY TWO</mark>
+                    </div>
+                </div>
+                <textarea class="practice-textarea" placeholder="Type your formatted version here..."></textarea>
+                <div class="answer-card">
+                    <button class="answer-toggle" onclick="toggleCard('card2', this)">Reveal Correct Answer</button>
+                </div>
+            </div>
+
+            <!-- Practice Item 3 -->
+            <div class="practice-item">
+                <div class="practice-title">
+                    <span class="practice-number">3</span>
+                    Departure with Waypoints
+                </div>
+                <div class="flip-card-wrapper" id="card3">
+                    <div class="flip-card-front-static">
+                        <div class="flip-card-label">❌ Unformatted Transcript</div>
+                        Pilot: memphis center american sixteen fifty two level three five zero<br><br>
+                        ATC: american sixteen fifty two memphis center roger proceed direct balet then as filed<br><br>
+                        Pilot: direct balet then as filed american sixteen fifty two
+                    </div>
+                    <div class="flip-card-back-static">
+                        <div class="flip-card-label">✓ Correctly Formatted</div>
+                        Pilot: <mark>M</mark>emphis center <mark>AMERICAN SIXTEEN FIFTY TWO</mark> level three five zero<br><br>
+                        ATC: <mark>AMERICAN SIXTEEN FIFTY TWO</mark> <mark>M</mark>emphis center roger proceed direct balet then as filed<br><br>
+                        Pilot: direct balet then as filed <mark>AMERICAN SIXTEEN FIFTY TWO</mark>
+                    </div>
+                </div>
+                <textarea class="practice-textarea" placeholder="Type your formatted version here..."></textarea>
+                <div class="answer-card">
+                    <button class="answer-toggle" onclick="toggleCard('card3', this)">Reveal Correct Answer</button>
+                </div>
+            </div>
+
+            <!-- Practice Item 4 -->
+            <div class="practice-item">
+                <div class="practice-title">
+                    <span class="practice-number">4</span>
+                    Approach with Altitude and Speed Restrictions
+                </div>
+                <div class="flip-card-wrapper" id="card4">
+                    <div class="flip-card-front-static">
+                        <div class="flip-card-label">❌ Unformatted Transcript</div>
+                        ATC: delta three twenty seven descend and maintain one one thousand cross flcon at one four thousand<br><br>
+                        Pilot: descend and maintain one one thousand cross flcon at one four thousand delta three twenty seven<br><br>
+                        ATC: delta three twenty seven reduce speed to two two zero knots<br><br>
+                        Pilot: reduce speed two two zero knots delta three twenty seven
+                    </div>
+                    <div class="flip-card-back-static">
+                        <div class="flip-card-label">✓ Correctly Formatted</div>
+                        ATC: <mark>DELTA THREE TWENTY SEVEN</mark> descend and maintain one one thousand cross flcon at one four thousand<br><br>
+                        Pilot: descend and maintain one one thousand cross flcon at one four thousand <mark>DELTA THREE TWENTY SEVEN</mark><br><br>
+                        ATC: <mark>DELTA THREE TWENTY SEVEN</mark> reduce speed to two two zero knots<br><br>
+                        Pilot: reduce speed two two zero knots <mark>DELTA THREE TWENTY SEVEN</mark>
+                    </div>
+                </div>
+                <textarea class="practice-textarea" placeholder="Type your formatted version here..."></textarea>
+                <div class="answer-card">
+                    <button class="answer-toggle" onclick="toggleCard('card4', this)">Reveal Correct Answer</button>
+                </div>
+            </div>
+
+            <!-- Practice Item 5 -->
+            <div class="practice-item">
+                <div class="practice-title">
+                    <span class="practice-number">5</span>
+                    VFR Flight Following with Traffic
+                </div>
+                <div class="flip-card-wrapper" id="card5">
+                    <div class="flip-card-front-static">
+                        <div class="flip-card-label">❌ Unformatted Transcript</div>
+                        Pilot: houston approach cherokee seven two three golf foxtrot over sugar land at three thousand five hundred request vfr flight following to austin<br><br>
+                        ATC: cherokee seven two three golf foxtrot houston approach squawk five four three two<br><br>
+                        Pilot: squawk five four three two cherokee seven two three golf foxtrot
+                    </div>
+                    <div class="flip-card-back-static">
+                        <div class="flip-card-label">✓ Correctly Formatted</div>
+                        Pilot: <mark>H</mark>ouston approach <mark>CHEROKEE SEVEN TWO THREE GOLF FOXTROT</mark> over <mark>S</mark>ugar <mark>L</mark>and at three thousand five hundred request <mark>VFR</mark> flight following to <mark>A</mark>ustin<br><br>
+                        ATC: <mark>CHEROKEE SEVEN TWO THREE GOLF FOXTROT</mark> <mark>H</mark>ouston approach squawk five four three two<br><br>
+                        Pilot: squawk five four three two <mark>CHEROKEE SEVEN TWO THREE GOLF FOXTROT</mark>
+                    </div>
+                </div>
+                <textarea class="practice-textarea" placeholder="Type your formatted version here..."></textarea>
+                <div class="answer-card">
+                    <button class="answer-toggle" onclick="toggleCard('card5', this)">Reveal Correct Answer</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 20 Most Common ATC Conversations -->
+        <section class="conversation-section">
+            <h2>20 Most Common ATC Conversations</h2>
+
+            <!-- 1. Landing Clearance -->
+            <div class="conversation-item">
+                <div class="conversation-title">
+                    <span class="conversation-number">1</span>
+                    Landing Clearance
+                </div>
+                <div class="conversation-description">Pilot arriving at an airport and receiving permission to land</div>
+                <div class="dialogue">
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "Springfield tower CESSNA ONE TWO LIMA ten miles northeast inbound for landing with information Kilo"
+                    </div>
+                    <div class="dialogue-line atc-line">
+                        <span class="speaker">ATC:</span> "CESSNA ONE TWO LIMA Springfield tower runway three two left cleared to land"
+                    </div>
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "cleared to land runway three two left CESSNA ONE TWO LIMA"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Takeoff Clearance -->
+            <div class="conversation-item">
+                <div class="conversation-title">
+                    <span class="conversation-number">2</span>
+                    Takeoff Clearance
+                </div>
+                <div class="conversation-description">Pilot ready to depart and receiving permission to take off</div>
+                <div class="dialogue">
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "Springfield tower CESSNA ONE TWO LIMA runway three two left ready for departure"
+                    </div>
+                    <div class="dialogue-line atc-line">
+                        <span class="speaker">ATC:</span> "CESSNA ONE TWO LIMA Springfield tower wind three four zero at eight cleared for takeoff runway three two left"
+                    </div>
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "cleared for takeoff runway three two left CESSNA ONE TWO LIMA"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Taxi Instructions -->
+            <div class="conversation-item">
+                <div class="conversation-title">
+                    <span class="conversation-number">3</span>
+                    Taxi Instructions
+                </div>
+                <div class="conversation-description">Pilot requesting to move on the ground to/from a runway</div>
+                <div class="dialogue">
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "Springfield ground CESSNA ONE TWO LIMA at the south ramp request taxi to runway three two left with information Kilo"
+                    </div>
+                    <div class="dialogue-line atc-line">
+                        <span class="speaker">ATC:</span> "CESSNA ONE TWO LIMA Springfield ground taxi to runway three two left via Alfa Bravo hold short runway two eight"
+                    </div>
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "taxi to runway three two left via Alfa Bravo hold short runway two eight CESSNA ONE TWO LIMA"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Frequency Handoff -->
+            <div class="conversation-item">
+                <div class="conversation-title">
+                    <span class="conversation-number">4</span>
+                    Frequency Handoff
+                </div>
+                <div class="conversation-description">ATC transferring the pilot to a different controller/frequency</div>
+                <div class="dialogue">
+                    <div class="dialogue-line atc-line">
+                        <span class="speaker">ATC:</span> "CESSNA ONE TWO LIMA contact departure one two four point three"
+                    </div>
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "contact departure one two four point three CESSNA ONE TWO LIMA"
+                    </div>
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot (on new frequency):</span> "Springfield departure CESSNA ONE TWO LIMA two thousand climbing four thousand"
+                    </div>
+                    <div class="dialogue-line atc-line">
+                        <span class="speaker">ATC:</span> "CESSNA ONE TWO LIMA Springfield departure radar contact climb and maintain six thousand"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Altitude Assignment (Climb) -->
+            <div class="conversation-item">
+                <div class="conversation-title">
+                    <span class="conversation-number">5</span>
+                    Altitude Assignment (Climb)
+                </div>
+                <div class="conversation-description">ATC instructing pilot to climb to a higher altitude</div>
+                <div class="dialogue">
+                    <div class="dialogue-line atc-line">
+                        <span class="speaker">ATC:</span> "DELTA FOUR TWENTY SIX climb and maintain flight level three five zero"
+                    </div>
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "climb and maintain flight level three five zero DELTA FOUR TWENTY SIX"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Altitude Assignment (Descend) -->
+            <div class="conversation-item">
+                <div class="conversation-title">
+                    <span class="conversation-number">6</span>
+                    Altitude Assignment (Descend)
+                </div>
+                <div class="conversation-description">ATC instructing pilot to descend to a lower altitude</div>
+                <div class="dialogue">
+                    <div class="dialogue-line atc-line">
+                        <span class="speaker">ATC:</span> "AMERICAN EIGHT FIFTEEN descend and maintain eight thousand"
+                    </div>
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "descend and maintain eight thousand AMERICAN EIGHT FIFTEEN"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Heading Change -->
+            <div class="conversation-item">
+                <div class="conversation-title">
+                    <span class="conversation-number">7</span>
+                    Heading Change
+                </div>
+                <div class="conversation-description">ATC instructing pilot to turn to a specific heading</div>
+                <div class="dialogue">
+                    <div class="dialogue-line atc-line">
+                        <span class="speaker">ATC:</span> "SOUTHWEST TWENTY THREE FORTY turn right heading zero nine zero"
+                    </div>
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "right heading zero nine zero SOUTHWEST TWENTY THREE FORTY"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Traffic Advisory -->
+            <div class="conversation-item">
+                <div class="conversation-title">
+                    <span class="conversation-number">8</span>
+                    Traffic Advisory
+                </div>
+                <div class="conversation-description">ATC alerting pilot to nearby aircraft</div>
+                <div class="dialogue">
+                    <div class="dialogue-line atc-line">
+                        <span class="speaker">ATC:</span> "CESSNA ONE TWO LIMA traffic eleven o'clock five miles southbound a boeing seven thirty seven descending out of eight thousand"
+                    </div>
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "looking for traffic CESSNA ONE TWO LIMA"
+                    </div>
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "traffic in sight CESSNA ONE TWO LIMA"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Holding Instructions -->
+            <div class="conversation-item">
+                <div class="conversation-title">
+                    <span class="conversation-number">9</span>
+                    Holding Instructions
+                </div>
+                <div class="conversation-description">ATC instructing pilot to circle at a specific point</div>
+                <div class="dialogue">
+                    <div class="dialogue-line atc-line">
+                        <span class="speaker">ATC:</span> "UNITED FIVE SIXTY TWO hold east of jones intersection on the zero nine zero radial expect further clearance at two three four five"
+                    </div>
+                    <div class="dialogue-line pilot-line">
+                        <span class="speaker">Pilot:</span> "hold east of jones on the zero nine zero radial expect further clearance two three four five UNITED FIVE SIXTY TWO"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. ILS Approach Clearance -->
+            <div class="conversation-item">
+                <div class="conversation-title">
+                    <span class="conversation-number">10</span>
+                    ILS Approach Clearance
+                </div>
+                <div class="conversation-description">ATC clearing pilot for an instrument landing system approach</div>
+                <div class="dialogue">
+                    <div class="dialogue-line atc-line">
+                        <span class="speaker">ATC:</span> "DELTA FOUR TWENTY SIX four miles from grove turn left heading two eight zero maintain two thousand until established on the localizer cleared ILS runway two seven left approach"
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Added JavaScript for Flip Cards -->
+    <script>
+        function toggleCard(cardId, button) {
+            const card = document.getElementById(cardId);
+            
+            // Toggle the flipped class on the card wrapper
+            card.classList.toggle('flipped');
+            
+            // Toggle the style class on the button
+            button.classList.toggle('showing-answer');
+            
+            // Change button text based on state
+            if (card.classList.contains('flipped')) {
+                button.textContent = "Hide Answer";
+            } else {
+                button.textContent = "Reveal Correct Answer";
+            }
+        }
+    </script>
+</body>
+</html>
+```
