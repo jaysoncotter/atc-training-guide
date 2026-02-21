@@ -22,6 +22,11 @@ Q&A pairs optimized for comprehension and retention.
 
 It is now used as an onboarding resource for contributors preparing to pass the ATC qualification evaluation.
 
+## Remote Work Opportunity 
+
+As of Feb 2026 if you use my referal link you will be automatically added to the ATC Transcription Project and can possible start tasking and 
+earning in as little as a few hours [https://app.alignerr.com/signin?referral-code=b5c920ad-ffb3-4075-8b66-8b6846b2846d&program=adad27c0-bb41-11f0-9233-935114fa160e](https://app.alignerr.com/signin?referral-code=b5c920ad-ffb3-4075-8b66-8b6846b2846d&program=adad27c0-bb41-11f0-9233-935114fa160e)
+
 ## Tech
 
 Single-page HTML/CSS/JavaScript — no frameworks, no dependencies. 
