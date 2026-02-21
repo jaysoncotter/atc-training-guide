@@ -9,7 +9,7 @@ standards and pass their qualification evaluation.
 - **Flip-card flashcards** for active recall practice
 - **Progressive practice exercises** with reveal-answer functionality
 - **Side-by-side formatting comparisons** (unformatted vs. correctly formatted)
-- **Annotated real-world ATC communication patterns** covering the 20 most common exchanges
+- **Annotated real-world ATC communication patterns** covering several common exchanges
 - **Reference tables** for callsigns, waypoints, phonetics, and formatting rules
 - **External resource links** (SkyVector, AirNav, FlightAware) for verification workflows
 
